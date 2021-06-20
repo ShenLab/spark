@@ -1,0 +1,56 @@
+#!/bin/bash
+# Remove temp files
+
+default_files="'*~' '.*~' 'core' '#*#'"
+name=$0
+
+command="rm"			# Default command
+print=-print			# Default is to print files removed
+
+for x in "$@"; do
+    case "$x" in
+    -n) shift 			# No-remove
+        unset command
+        ;;
+    -q) shift        		# Quiet
+        unset print
+        ;;
+    -i) shift			# Inquire before removing
+        command="rm -i"
+        unset print
+        ;;
+    -*) shift
+        echo "Usage: $name [ -n | -i | -q ] [ dir ] [ pattern . . . ]" 1>&2
+	exit
+        ;;
+    *)  break
+        ;;
+    esac
+done
+
+# Is an argument supplied and is it a directory? If so, that is where
+# to start the search.
+if [ -n "$1" -a -d "$1" ]; then
+    dir=$1
+    shift
+fi
+
+# Any arguments remaining? If not a default set of files to search for
+# is used.
+if [ "$#" -le 0 ]; then
+# Have we got file-name patterns in SWEEP_FILES they are to be used
+    set ${SWEEP_FILES:-$default_files}
+fi
+
+{
+  echo -n " \( -name $1"
+  shift
+  for F do
+    echo -n " -o -name $F "
+  done
+  echo -n " \) $print"
+  if [ -n "$command" ]; 
+  then
+    echo -n " -exec $command {} \;"
+  fi
+} | xargs find ${dir:-$HOME} -type f  
