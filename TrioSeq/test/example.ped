@@ -1,0 +1,15 @@
+FAM1	A		0		0		1		1
+FAM1	B		0		0		2		1
+FAM1	C		A		B		1		2
+FAM1	D		A		B		2		1
+FAM1	E		0		0		2		1
+FAM1	F		0		0		1		1
+FAM1	G		C		E		2		2
+FAM1	H		C		E		1		1
+FAM1    H_Re       C       E       1       1
+FAM1    H_Re2       C       E       1       1
+FAM1	I		C		L		2		1
+FAM1	J		F		D		1		1
+FAM1    J_Re       F       D       1       1
+FAM1	K		F		D		2		1
+FAM1	L		0		0		2		1
