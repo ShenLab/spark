@@ -1,6 +1,3 @@
-# Contrib: contain Joseph contributed slides and script
-
-#
 # GeneLen/
 # Investigating gene length distribution
 # First plot CDF of baseline mutation rates => GeneLen/MutRateCDFs.png
@@ -14,7 +11,6 @@ Rscript GeneLen.R
 # on nonsense and frameshift variants.
 
 
-#
 # Selection coefficient
 # This can be easily derived from s = mu/CAF
 # We compared mu, CAF in reference populations, 
@@ -24,7 +20,5 @@ Rscript GeneLen.R
 # they are selected by denovo enrich P<1e-4 and Mega P<0.05 for known genes or novel genes
 Rscript SelCoeffs.R
 
-
-#
 # Draw heatmaps of power and sample size for future studies
 Rscript Heatmap.R
